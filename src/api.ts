@@ -15,7 +15,7 @@ export async function searchTickets(brand: string, groupIds: number[]): Promise<
 
     const negativeGroups = groupIds.map((id) => `-group:${id}`).join(' ');
 
-    const query = `status<closed brand:"${brand}" ${negativeGroups}`;
+    const query = `status<closed brand:"${brand}" ${negativeGroups} -tags:"ojuto_testticket"`;
     let url: string | null =
         `${ZENDESK_VI_BASE_URL}/api/v2/search/export.json?query=${encodeURIComponent(query)}`;
 
